@@ -8,9 +8,9 @@ import "../styling/blogs.css";
 const Blogs = (props) => {
   const searchInput = useSelector(selectUserInput,[]);
 
-  const blog_url = `https://newsapi.org/v2/everything?q=${searchInput}&from=2021-07-04&sortBy=publishedAt&apiKey=6bac4db6f3d74c0c8ea79d91f1b11e42`;
+  //const blog_url = `https://newsapi.org/v2/everything?q=${searchInput}&from=2021-07-04&sortBy=publishedAt&apiKey=6bac4db6f3d74c0c8ea79d91f1b11e42`;
 
-  //const blog_url = `https://gnews.io/api/v4/search?q=${searchInput}&token=6bac4db6f3d74c0c8ea79d91f1b11e42`;
+  const blog_url = `https://gnews.io/api/v4/search?q=${searchInput}&token=01dc51d14f5a7f6002e31110211b3a92`;
   const dispatch = useDispatch();
   const [blogs, setBlogs] = useState();
 
@@ -35,12 +35,12 @@ const Blogs = (props) => {
       <h1 className="blog__page__header"> {searchInput} </h1>
       {loading ? <h1 className="loading">Loading...</h1> : ""}
       <div className="results">
-      Search Results {blogs?.totalResults}
+      Search Results {blogs?.totalArticles}
       </div>
       <div className="blogs">
         {blogs?.articles?.map((blog) => (
           <a className="blog" target="_blank" rel="noopener noreferrer" href={blog.url}>
-            <img src={blog.urlToImage} alt="newsimage" />
+            <img src={blog.image} alt="newsimage" />
             <div>
               <h3 className="sourceName">
                 <span>{blog.source.name}</span>
